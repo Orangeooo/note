@@ -137,6 +137,8 @@ sudo vim /etc/apache2/sites-enabled/000-default.conf
 service apache2 stop
 
 service apache2 start
+
+sudo service apache2 restart
 ```
 
 修改tomcat监听端口
