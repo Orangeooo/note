@@ -28,7 +28,7 @@ ssh-keygen -t rsa
 # ssh
 
 Host ubuntu
-    HostName cyhhhh.top
+    HostName g
     User ubuntu
     ServerAliveInterval 40  保持连接
 ```

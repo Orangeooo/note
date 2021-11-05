@@ -64,7 +64,7 @@ frpc.ini配置文件
 ```
 [common]
 
-server_addr = cyhhhh.top
+server_addr = google.com
 server_port = 7000
 auto_token=qwertyuiop
 
