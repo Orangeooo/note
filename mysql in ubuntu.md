@@ -27,7 +27,7 @@ select user,host,plugin from mysql.user;
 
 ```mysql
 create user USERNAME@'%' identified by 'PSAAWORD';
-create user fof@'%' identified by '4041qaz@WSX';
+create user user@'%' identified by '123456';
 删除用户
 DROP USER 'USERNAME'@'%';
 ```
@@ -42,12 +42,12 @@ alter user "USERNAME"@"%" identified by "NEW PSAAWORD";
 
 ```mysql
 grant all privileges on *.* to root@'%' with grant option;
-grant all privileges on fof.* to f@'%' with grant option;
+grant all privileges on db.table to user@'%' with grant option;
 *.*表示 数据库.表
 # 撤销权限
 REVOKE privilege ON databasename.tablename FROM 'username'@'host';
-REVOKE all ON information_schema.* FROM 'ppp'@'%';
-REVOKE all ON p.* FROM 'ppp'@'%';
+REVOKE all ON information_schema.* FROM 'user'@'%';
+REVOKE all ON p.* FROM 'user'@'%';
 #刷新
 flush privileges;
 ```
@@ -71,7 +71,7 @@ service mysql restart
 systemctl status mysql.service 
 ```
 
-<img src="C:\Users\11613\AppData\Roaming\Typora\typora-user-images\image-20211012174224263.png" alt="image-20211012174224263" style="zoom: 50%;" />
+
 
 ## python连接数据库
 
@@ -88,9 +88,9 @@ pip install MySQL-connector-python
 import mysql.connector
 #建立连接
 mydb = mysql.connector.connect(
-    host="cyhhhh.top",  # 数据库主机地址
-    user="ppp",  # 数据库用户名
-    passwd="1qaz@WSX"  # 数据库密码
+    host="google.com",  # 数据库主机地址
+    user="user",  # 数据库用户名
+    passwd="123456@WS"  # 数据库密码
 )
 ```
 

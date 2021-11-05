@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //引用代码此处需要修改，address为数据IP，Port为端口号，DBName为数据名称，UserName为数据库登录账户，Password为数据库登录密码
 
-                    con = DriverManager.getConnection("jdbc:mysql://1.117.54.58:3306/DB?useSSL=false&useUnicode=true&characterEncoding=UTF-8", "root","1qazxsw2");
+                    con = DriverManager.getConnection("jdbc:mysql://ip:3306/DB?useSSL=false&useUnicode=true&characterEncoding=UTF-8", "u","123456");
 
                 } catch (SQLException e) {
 
