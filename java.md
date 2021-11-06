@@ -107,3 +107,4 @@
 名称：Path	值：%JAVA_HOME%\bin	和	%JAVA_HOME%\jre\bin
 
 检查：输入java，javac
+
