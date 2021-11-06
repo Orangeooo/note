@@ -20,6 +20,15 @@ ssh-keygen -t rsa
 
 将公钥复制到远程主机的.ssh文件夹下的authorized_keys中
 
+
+
+```undefined
+配置文件
+sudo vim /etc/ssh/sshd_config
+重启
+sudo service ssh restart
+```
+
 ## 设置别名
 
 .ssh/config文件
