@@ -19,7 +19,19 @@ mydb = mysql.connector.connect(
 )
 ```
 
+```
 
+cursor = db.cursor()
+sql = "INSERT INTO user (id, name) VALUES ('2', 'cyh')"
+sql2= "select * from user"
+cursor.execute(sql2)
+#db.commit()
+
+result = cursor.fetchall()  # fetchall() 获取所有记录
+
+for x in result:
+    print(x)
+```
 
 ## 办公自动化
 

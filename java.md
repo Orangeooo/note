@@ -1,4 +1,4 @@
-## 目录
+## 路线
 
 1、Java学习方法介绍、第一阶段课程以及学习目标介绍
 
@@ -108,3 +108,303 @@
 
 检查：输入java，javac
 
+### maven
+
+### springboot
+
+Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化Spring应用的初始搭建以及开发过程。 -使用springboot以后,搭建一个spring应用和开发变得很简单
+
+在pom文件中
+
+spring boot 父节点依赖,引入这个之后相关的引入就不需要添加version配置，spring boot会自动选择最合适的版本进行添加。
+
+```
+<!--统一管理版本-->
+<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.2</version>
+</parent>
+```
+
+#### 依赖
+
+```
+<dependency>
+	<!--web依赖-->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+	
+	<!--热部署依赖-->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+		<optional>true</optional>
+		<scope>true</scope>
+	</dependency>
+
+	<!--mysql驱动-->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+	</dependency>
+	
+	<!--mybatis的依赖-->
+	<dependency>
+		<groupId>org.mybatis.spring.boot</groupId>
+		<artifactId>mybatis-spring-boot-starter</artifactId>
+		<version>2.2.0</version>
+	</dependency>
+	
+	<!--Swagger依赖-->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>2.8.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>2.8.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.caspar-chen</groupId>
+      <artifactId>swagger-ui-layer</artifactId>
+      <version>1.1.2</version>
+	</dependency>
+
+</dependencies>
+```
+#### 打包插件
+
+```
+<build>
+	<plugins>
+		<plugin>
+		<!--springboot的maven插件-->
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-maven-plugin</artifactId>
+		<version>2.2.6.RELEASE</version>
+		<executions>
+			<execution>
+				<goals>
+					<goal>repackage</goal>
+				</goals>
+			</execution>
+		</executions>
+		</plugin>
+	</plugins>
+</build>
+```
+
+### 三层结构
+
+controller控制层
+
+service业务层
+
+dao持久化层
+
+entity实体：私有属性，get/set，toString，满参构造，无参构造
+
+#### 普通项目
+
+结构
+
+www
+	project
+		controller
+			UserController
+		dao
+			UserDao
+		entity
+			UserEntity
+		service
+			impl
+				UserServiceimpl
+			UserService
+		UserApplication
+
+resources
+	www
+		project
+			dao
+				UserDao.xml
+			application.yml
+
+UserController
+
+```java
+@RestController
+public class UserController {
+
+    @Autowired
+    UserService userService;
+    @RequestMapping("queryUser")
+    public List<User> queryUser(){
+        List<User> users = userService.queryAllUsers();
+        return users;
+    }
+}
+```
+
+UserDao
+
+```java
+public interface UserDao {
+
+    List<User> queryAllUsers();
+}
+```
+
+UserService
+
+```java
+public interface UserService {
+
+    List<User> queryAllUsers();
+}
+```
+
+UserServiceimpl
+
+```java
+@Service
+public class UserServiceimpl implements UserService {
+    @Resource
+    UserDao userDao;
+
+    @Override
+    public List<User> queryAllUsers() {
+        List<User> users = userDao.queryAllUsers();
+        System.out.println(":"+users);
+        return users;
+    }
+}
+```
+
+UserEntity
+
+```java
+public class User {
+
+    private long id;
+    private String username;
+    private String sex;
+
+    public User() {
+    }
+
+    public User(long id, String username, String sex) {
+        this.id = id;
+        this.username = username;
+        this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", sex='" + sex + '\'' +
+                '}';
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+}
+```
+
+启动类
+
+```java
+@MapperScan("www.project.dao")
+@SpringBootApplication
+public class UserApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(UserApplication.class);
+    }
+}
+```
+
+UserDao.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.qianfeng.dao.UserDao">
+
+    <select id="queryAllUsers" resultType="www.qianfeng.entity.User">
+        select * from user
+    </select>
+
+</mapper>
+```
+
+application.yml
+
+```yaml
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://1.117.54.58/test
+    username: king
+    password: cyh@CYH!0427
+server:
+  port: 8080
+```
+
+#### web项目
+
+结构
+
+www
+	project
+		controller
+			UserController
+		dao
+			UserDao
+		entity
+			UserEntity
+		service
+			impl
+				UserServiceimpl
+			UserService
+		UserApplication
+
+webapp
+	WEB-INF
+		web.xml
+	index.jsp
+
+```
+<!--mysql驱动-->
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+</dependency>
+```
