@@ -1,410 +1,130 @@
-## 路线
+# 第一章 Java程序设计概述
 
-1、Java学习方法介绍、第一阶段课程以及学习目标介绍
+Java特点：
 
-2、常用DOS命令、JDK环境安装
+简单性；面向对象；分布式；健壮性；安全性；体系结构中立；可移植性；解释型；高性能；多线程；动态性
 
-3、Java数据类型、类型转换
+# 第二章 Java程序设计环境
 
-4、运算符（赋值、算数、逻辑、关系、三目（三元）运算符）
+## 术语
 
-5、if、if-else、switch、break、多重条件
+JDK：Java Development Kit
 
-6、for、while、do-while
+JRE：Java Runtime Environment
 
-7、循环嵌套、循环终止
+SE：Standard Edition
 
-8、方法的概念、方法的定义、方法的组成、方法的调用
+EE：Enterprise Edition
 
-9、方法的形参与实参、方法的返回值类型与返回值、return的两种用法、递归
+ME：Micro Edition
 
-10、数组的引言、数组的概念、数组的创建、数组的使用
+Java FX
 
-11、数组的复制、数组的扩容、数组参数和返回值、可变长参数
+OpenJDK：JavaSE 的 一个免费开源实现
 
-12、3种排序、二维数组
+## 安装JDK
 
-13、杨辉三角
+**下载**
 
-14、面向对象
+[JDK下载地址](https://www.oracle.com/java/technologies/downloads/#java8)
 
-15、构造方法、构造方法重载、有参构造和无参构造各自作用、this关键字
+推荐版本：Java SE Development Kit 8u311，Java SE Development Kit 11.0.13
 
-16、成员变量、成员方法、成员变量和局部变量区别
+**设置环境变量**
 
-17、封装、什么样的代码需要封装、继承
-
-18、多态、访问修饰符
-
-19、super、super和this区别
-
-20、三个修饰符、静态方法、静态代码块、普通代码块、抽象类的定义、抽象类的作用
-
-21、接口的语法、与抽象类的异同、接口的微观概念、接口规范、接口引用、接口的多态、接口和抽象类的区别和用途（接口定义规范、抽象类定义差异）
-
-22、什么是内部类、成员内部类、静态内部类、局部内部类、局部内部类访问外部类局部变量
-
-23、局部内部类的应用场景、匿名内部类、Object类、getClass方法、hashCode方法、toString方法、equals方法、equals方法重写、finalize方法
-
-24、什么是包装类、8种包装类型、装箱和拆箱的常用方法、整数类型的缓冲区
-
-25、String类、字符串的不变性、字符串的常用方法、可变字符串
-
-26、什么是集合、Collection体系集合、Collection父接口、List子接口、ArrayList、LinkedList、Vector
-
-27、线性表与链表的区别和优劣、泛型集合、Collections工具类
-
-28、Set子接口、HashSet、HashSet去重原理、重写hashCode与equals、LinkedHashSet、TreeSet、TreeSet去重原理
-
-29、算法时间复杂度、空间复杂度、排序算法、查找算法、数据结构
-
-30、什么是异常、异常体系分类、异常的产生、异常的传递、throws、异常的处理（try、catch、finally）、自定义异常
-
-31、什么是进程、什么是线程、线程的组成、创建线程的两种基本方式、线程状态
-
-32、线程安全问题、同步代码块、同步方法、线程状态（6状态）、死锁问题、生产者消费者、线程通信（wait、notify、notifyAll）
-
-33、线程池概念、线程池原理、线程池相关接口与类、Callable接口、Future接口、Lock接口、重入锁、读写锁
-
-34、线程安全集合、Collections工具获得线程安全集合、CopyOnWriteArrayList
-
-35、线程案例
-
-36、流的概念、流的分类、字节流、字节节点流、字节过滤流
-
-37、File、FileFilter、字符编码、字符流、字节过滤流、流的标准使用步骤、[XML]
-
-38、对象序列化
-
-39、IO流综合案例
-
-40、什么是网络、什么是计算机网络、网络模型、TCP/IP模型、TCP/UDP、IP、IPV4应用分类、Port端口
-
-41、InetAddress类、基于TCP的网络编程、开发步骤
-
-42、Lambda表达式、Stream API、Date Time API、Optional类
-
-43、什么是类对象、获取类对象、Class的常用方法、注解
-
-44、DOM4J、SAX
-
-45、游戏面板、游戏按钮、游戏逻辑、游戏数据读取、游戏线程控制、游戏计分算法、游戏血量算法等
-
-46、完成小游戏项目
-
-## Spring
-
-### jdk配置
-
-常用版本：1.8.0；1x.0
-
-环境变量
-
-名称：JAVA_HOME	值：jdk安装路径
-
-名称：CLASSPATH	值：.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;
-
-名称：Path	值：%JAVA_HOME%\bin	和	%JAVA_HOME%\jre\bin
-
-检查：输入java，javac
-
-### maven
-
-### springboot
-
-Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化Spring应用的初始搭建以及开发过程。 -使用springboot以后,搭建一个spring应用和开发变得很简单
-
-在pom文件中
-
-spring boot 父节点依赖,引入这个之后相关的引入就不需要添加version配置，spring boot会自动选择最合适的版本进行添加。
+设置>系统>关于>高级系统设置>环境变量
 
 ```
-<!--统一管理版本-->
-<parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.2</version>
-</parent>
+JAVA_HOME:
+C:\Program Files (x86)\Java\jdk1.8.0_291
+
+CLASSPATH:
+.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;
+
+PATH:
+%JAVA_HOME%\bin
+%JAVA8_HOME%\jre\bin
 ```
 
-#### 依赖
+cmd验证：
 
 ```
-<dependency>
-	<!--web依赖-->
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-web</artifactId>
-	</dependency>
-	
-	<!--热部署依赖-->
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-devtools</artifactId>
-		<optional>true</optional>
-		<scope>true</scope>
-	</dependency>
-
-	<!--mysql驱动-->
-	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-	</dependency>
-	
-	<!--mybatis的依赖-->
-	<dependency>
-		<groupId>org.mybatis.spring.boot</groupId>
-		<artifactId>mybatis-spring-boot-starter</artifactId>
-		<version>2.2.0</version>
-	</dependency>
-	
-	<!--Swagger依赖-->
-    <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-swagger2</artifactId>
-      <version>2.8.0</version>
-    </dependency>
-    <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-swagger-ui</artifactId>
-      <version>2.8.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.github.caspar-chen</groupId>
-      <artifactId>swagger-ui-layer</artifactId>
-      <version>1.1.2</version>
-	</dependency>
-
-</dependencies>
-```
-#### 打包插件
-
-```
-<build>
-	<plugins>
-		<plugin>
-		<!--springboot的maven插件-->
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-maven-plugin</artifactId>
-		<version>2.2.6.RELEASE</version>
-		<executions>
-			<execution>
-				<goals>
-					<goal>repackage</goal>
-				</goals>
-			</execution>
-		</executions>
-		</plugin>
-	</plugins>
-</build>
+java
+javac
 ```
 
-### 三层结构
+javac程序是一个Java编译器，它将文件.java文件编译成.class文件
 
-controller控制层
+```
+javac hello.java
+```
 
-service业务层
+java启动Java虚拟机执行.class文件中的字节码
 
-dao持久化层
+```
+java hello
+```
 
-entity实体：私有属性，get/set，toString，满参构造，无参构造
+之后使用集成开发环境IntelliJ IDEA
 
-#### 普通项目
+# 第三章 Java的基本程序设计结构
 
-结构
-
-www
-	project
-		controller
-			UserController
-		dao
-			UserDao
-		entity
-			UserEntity
-		service
-			impl
-				UserServiceimpl
-			UserService
-		UserApplication
-
-resources
-	www
-		project
-			dao
-				UserDao.xml
-			application.yml
-
-UserController
+## hello,world demo
 
 ```java
-@RestController
-public class UserController {
-
-    @Autowired
-    UserService userService;
-    @RequestMapping("queryUser")
-    public List<User> queryUser(){
-        List<User> users = userService.queryAllUsers();
-        return users;
-    }
-}
-```
-
-UserDao
-
-```java
-public interface UserDao {
-
-    List<User> queryAllUsers();
-}
-```
-
-UserService
-
-```java
-public interface UserService {
-
-    List<User> queryAllUsers();
-}
-```
-
-UserServiceimpl
-
-```java
-@Service
-public class UserServiceimpl implements UserService {
-    @Resource
-    UserDao userDao;
-
-    @Override
-    public List<User> queryAllUsers() {
-        List<User> users = userDao.queryAllUsers();
-        System.out.println(":"+users);
-        return users;
-    }
-}
-```
-
-UserEntity
-
-```java
-public class User {
-
-    private long id;
-    private String username;
-    private String sex;
-
-    public User() {
-    }
-
-    public User(long id, String username, String sex) {
-        this.id = id;
-        this.username = username;
-        this.sex = sex;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", sex='" + sex + '\'' +
-                '}';
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-}
-```
-
-启动类
-
-```java
-@MapperScan("www.project.dao")
-@SpringBootApplication
-public class UserApplication {
-
+public class HelloWorld {
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class);
+        System.out.println("hello,world");
     }
 }
 ```
 
-UserDao.xml
+## 类名命名规范及注意事项
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="www.qianfeng.dao.UserDao">
+以字母开头
 
-    <select id="queryAllUsers" resultType="www.qianfeng.entity.User">
-        select * from user
-    </select>
+不能使用保留字
 
-</mapper>
-```
+长度无限制
 
-application.yml
+驼峰命名法
 
-```yaml
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://1.117.54.58/test
-    username: king
-    password: cyh@CYH!0427
-server:
-  port: 8080
-```
+源代码的文件名必须与公共类的名字相同
 
-#### web项目
+大小写敏感
 
-结构
+main 方法必须声明为 public
 
-www
-	project
-		controller
-			UserController
-		dao
-			UserDao
-		entity
-			UserEntity
-		service
-			impl
-				UserServiceimpl
-			UserService
-		UserApplication
+## 注释
 
-webapp
-	WEB-INF
-		web.xml
-	index.jsp
+单行
 
-```
-<!--mysql驱动-->
-<dependency>
-  <groupId>mysql</groupId>
-  <artifactId>mysql-connector-java</artifactId>
-</dependency>
-```
+//
+
+多行
+
+/*
+
+*/
+
+自动生成文档
+
+/**
+  *
+  *
+  */
+
+多行注释不能嵌套
+
+## 数据类型
+
+### 整型
+
+int				4字节				-2 147 483 648~2 147 483 648
+
+short			2字节				-32 768 - 32 767
+
+long				8字节				-9 223 372 036 854 775 B08 - 9 223 372 036 854 775 807
+
+byte				1 字节				-128~127
+
