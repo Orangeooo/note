@@ -75,4 +75,4 @@ export JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 
 进入tomcat的conf文件下的server.xml更改端口号
 
-<Connector port=
+<Connector port=404
