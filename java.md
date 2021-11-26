@@ -376,7 +376,7 @@ boolean equals(int[] a,int[ b])
 
 //输出数组信息
 String toString(int[] a)
-
+Arrays.toString
 //填充指定值到数组
 void fill(int[] a,int val)
 
@@ -393,4 +393,69 @@ int binarySearch(int[] a,int key)
 
 空指针异常
 
+### JVM内存结构
+
+类装载器
+
+方法区，虚拟机栈，堆，本地方法栈，程序计数器
+
+垃圾收集器
+
+执行引擎
+
+本地接口库
+
 # 第四章 面向对象
+
+类及类的成员
+
+属性，方法，构造器；代码块，内部类
+
+三大特征
+
+封装，继承，多态
+
+关键字
+
+this，super，static，final，abstract，interface，package，import
+
+### 属性与局部变量
+
+属性：定义在类中，有默认值，可以使用权限修饰符
+
+局部变量：定义在方法中，没有默认值，不可使用权限修饰符
+
+权限修饰符：private，public，缺省，protected
+
+### 匿名对象
+
+```java
+new class.methon();
+```
+
+### 方法
+
+重载：同名方法，参数不同
+
+可变个数形参：
+
+```
+public void methon(String ... string){
+
+}
+相当于
+public void methon(String[] string){
+
+}
+必须声明在末尾
+```
+
+方法参数的值传递机制：
+
+形参：方法声明时的参数
+
+实参：方法调用时实际传给形参的参数值
+
+值传递：基本数据类型
+
+引用传递：引用数据类型
