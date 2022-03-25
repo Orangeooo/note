@@ -425,7 +425,7 @@ this，super，static，final，abstract，interface，package，import
 
 局部变量：定义在方法中，没有默认值，不可使用权限修饰符
 
-权限修饰符：private，public，缺省，protected
+权限修饰符：private，default（缺省），protected，public
 
 ### 匿名对象
 
@@ -464,3 +464,54 @@ public void methon(String[] string){
 
 Tower of Hanoi
 
+### 封装与隐藏
+
+private
+
+get，set
+
+#### 权限修饰符
+
+private：类内部
+
+default：同一个包内
+
+protected：不同包的子类
+
+public：同一个工程
+
+### 构造器
+
+未定义时默认提供空参构造器
+
+JavaBean
+
+UML类图
+
+### this
+
+this表示当前对象或正在创建的对象，通常省略
+
+特殊：类的方法的形参与类的属性重名，修饰属性
+
+特殊：构造器的形参和类的属性重名
+
+#### this调用构造器
+
+this(形参列表);调用其他构造器 ,必须放在首行
+
+### MVC设计模式
+
+model，controller，view
+
+model.bean/domain,model.dao,model.db
+
+controller.activity,controller.fragment,controller.adapter,controller.service,controller.base
+
+view.utils,view.ui
+
+### import
+
+import static
+
+导入类或接口中的静态结构
